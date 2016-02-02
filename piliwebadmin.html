@@ -1,0 +1,48 @@
+{{define "piliwebadmin"}}
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/piliwebadmin.css">
+  <script src="/static/jquery-2.0.0.min.js"></script>
+  <script src="/static/bootstrap.min.js"></script>
+
+  <title>Pili Web Test</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+
+  <body>
+    <div class="btn btn-primary" onclick="generatingurl();">
+      生成链接
+    </div>
+    <p id="urlarea"></p>
+
+    <div class="container">
+      <div class="url-display-area">
+      </div>
+    </div>
+
+    <script>
+
+    function generatingurl(){
+      $.ajax({
+        url:"/"
+        data:{},
+        type:"POST",
+        success: function(data) {
+          alert(“服务器响应成功！”);   // 服务器返回的数据包含在 data 中
+        },
+        error:function(xhr,status,error){
+          throw new Error("status:"+status+"; Error:"+error);
+        }
+      });
+    }
+
+
+
+    </script>
+
+  </body>
+
+
+</html>
+{{end}}

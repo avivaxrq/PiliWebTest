@@ -1,0 +1,36 @@
+    .container {
+      max-width:940px;
+      font-family: Helvetica,Arial,sans-serif;
+      line-height: 120%;
+    }
+    .banner {
+      height:160px;
+      background-image: url("http://7u2o6v.com2.z0.glb.qiniucdn.com/pic-price-banner.png");
+      background-size: 90%;
+    }
+    @media only screen and (-webkit-device-pixel-ratio: 2) {
+      .banner {
+      background-image: url("http://7u2o6v.com2.z0.glb.qiniucdn.com/pic-price-banner2x.png");
+      }
+    }
+    .webtest { text-align:left; }
+    h4 {
+      margin-top: 0;
+      padding-top: 120px;
+      color: #3d424c;
+      font-size: 26px;
+      font-weight: 400;
+    }
+    h5 { font-size:16px; }
+    table {width: 100%;}
+    th,td {
+      text-align: left;
+      padding: 8px 0 !important;
+    }
+    /*label*/
+    .tableurl { width: 30%; }
+    .info { margin-top: 30px; }
+    .speedtest {margin-top: 18px;}
+    .btn-result { width: 100%; }
+    /*.buttondiv { text-align: center; }*/
+

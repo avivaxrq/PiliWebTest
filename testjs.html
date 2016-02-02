@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <script src="/static/jquery-2.0.0.min.js"></script>
+  <body>
+    <div class="banner">
+      <h4 class="text-center">Pili Web Test</h4>
+    </div>
+    <div class="container">
+      <div class="panel-body">
+        <table class="table">
+          <tr>
+            <td id="re"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+
+    <input id="netconnection" value="" name="net">
+
+    <script type="text/javascript">
+      var connection = navigator.connection||navigator.mozConnection||navigator.webkitConnection||{type:'unknown'};
+      var type_text = ['unknown','ethernet','wifi','2g','3g','4g','none'];
+      var re_el = document.getElementById("re");
+      get_status();
+      function get_status(){
+        if(typeof(connection.type) == "number"){
+          connection.type_text = type_text[connection.type];
+        }else{
+          connection.type_text = connection.type;
+        }
+
+        re_el.innerHTML = connection.type_text;
+        var netcon = document.gerElementById('netconnection');
+        netcon.value = connection.type_text;
+        netcon.innerHTML = connection.type_text;
+
+      }
+    </script>
+
+  </body>
+</html>

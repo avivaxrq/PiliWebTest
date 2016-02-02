@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+ function change(){
+     // var num=document.getElementById("num");
+    // var nums = document.getElementsByName("num").value;
+    //     for ( var i = 0; i < nums.length; i++)
+    //     {
+            // var obj = nums[i];
+            // obj.style.color = (Number(obj)>"0")?"red":"green";
+    //     }
+    // };
+
+var x = document.getElementsByName("num");
+  for(var i=0;i<x.length; i++){
+            var obj = x[i];
+            obj.style.color = (Number(obj.innerHTML)>"0")?"red":"green";
+
+    }
+}
+</script>
+</head>
+<body onload="change();">
+<div name="num">-1</div>
+<div name="num">100</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{{define "postsupport"}}
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/getinfo.css">
+  <script src="/static/jquery-2.0.0.min.js"></script>
+  <script src="/static/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://static.qiniucdn.com/public/v28849/add-on/underscore/underscore.min.js"></script>
+
+  <title>Pili Web Test</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+  <body>
+    <div class="banner">
+      <h4 class="text-center">Pili Web Test</h4>
+    </div>
+    <div class="container">
+      <p>email {{.email}}</p>
+      <p>phone {{.phone}}</p>
+      <p>descri {{.description}}</p>
+      <p>ip {{.ip}}</p>
+      <p>country {{.country}}</p>
+      <p>region {{.region}}</p>
+      <p>city{{.city}}</p>
+      <p>isp{{.isp}}</p>
+      <p>useragent{{.useragent}}</p>
+      <p>userinfo{{.userinfo}}</p>
+      <h5>工单提交完成，我们将马上处理</h5>
+    </div>
+  </body>
+</html>
+{{end}}

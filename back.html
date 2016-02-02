@@ -1,0 +1,276 @@
+{{define "getinfo"}}
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/getinfo.css">
+  <script src="/static/jquery-2.0.0.min.js"></script>
+  <script src="/static/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://static.qiniucdn.com/public/v28849/add-on/underscore/underscore.min.js"></script>
+
+  <style type="text/css">
+/*    .container {
+      max-width:940px;
+      font-family: Helvetica,Arial,sans-serif;
+      line-height: 120%;
+    }
+    .banner {
+      height:160px;
+      background-image: url("http://7u2o6v.com2.z0.glb.qiniucdn.com/pic-price-banner.png");
+      background-size: 90%;
+    }
+    @media only screen and (-webkit-device-pixel-ratio: 2) {
+      .banner {
+      background-image: url("http://7u2o6v.com2.z0.glb.qiniucdn.com/pic-price-banner2x.png");
+      }
+    }
+    .webtest { text-align:left; }
+    h4 {
+      margin-top: 0;
+      padding-top: 120px;
+      color: #3d424c;
+      font-size: 26px;
+      font-weight: 400;
+    }
+    h5 { font-size:16px; }
+    table {width: 100%;}
+    th,td {
+      text-align: left;
+      padding: 8px 0 !important;
+    }
+    .tableurl { width: 28%; }
+    .info { margin-top: 28px; }
+    .speedtest {margin-top: 18px;}
+    .btn-result {width: 30%;}
+*/
+  </style>
+
+  <title>Pili Web Test</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+
+  <body>
+    <div class="banner">
+      <h4 class="text-center">Pili Web Test</h4>
+    </div>
+    <div class="container">
+      <div class="webtest">
+        <div class="info">
+          <div class="panel panel-default">
+            <div class="panel-heading">信息</div>
+            <div class="panel-body">
+              <table class="table">
+                <tr>
+                  <td class="basic-info-title tableurl">IP</td>
+                  <td>{{.ip}}</td>
+                </tr>
+                <tr>
+                  <td>区域</td>
+                  <td>{{.country}}{{.region}}{{.city}}</td>
+                </tr>
+                <tr>
+                  <td>运营商</td>
+                  <td>{{.isp}}</td>
+                </tr>
+                <tr>
+                  <td>User-agent</td>
+                  <td>{{.useragent}}</td>
+                </tr>
+                <tr>
+                  <td>网络接入方式</td>
+                  <td id="re"></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+
+          <h5>信息</h5>
+          <table class="table">
+            <tr>
+              <td class="basic-info-title tableurl">IP</td>
+              <td>{{.ip}}</td>
+            </tr>
+            <tr>
+              <td>区域</td>
+              <td>{{.country}}{{.region}}{{.city}}</td>
+            </tr>
+            <tr>
+              <td>运营商</td>
+              <td>{{.isp}}</td>
+            </tr>
+            <tr>
+              <td>User-agent</td>
+              <td>{{.useragent}}</td>
+            </tr>
+            <tr>
+              <td>网络接入方式</td>
+              <td id="re"></td>
+            </tr>
+          </table>
+
+
+
+        <div class="speedtest">
+
+
+          <div class="panel panel-default">
+            <div class="panel-heading">速度检测</div>
+            <div class="panel-body">
+              <p>上行速度:</p>
+              <table class="table">
+                <thead>
+                  <tr>
+                  <th class="tableurl">上传域名</th>
+                  <th>文件大小</th>
+                  <th>耗时</th>
+                  <th>速度</th>
+                  <th>状态</th>
+                  </tr>
+                </thead>
+                <tbody class="js-upload-area">
+                </tbody>
+              </table>
+              <p>下行速度:</p>
+              <table class="table">
+                <thead>
+                  <tr>
+                  <th class="tableurl">下载域名</th>
+                  <th>文件大小</th>
+                  <th>耗时</th>
+                  <th>速度</th>
+                  <th>状态</th>
+                  </tr>
+                </thead>
+                <tbody class="js-download-area">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="">
+          <div class="panel panel-default">
+            <div class="panel-heading">用户信息</div>
+            <div class="panel-body">
+              <form action="/" method="post">
+                <div class="form-group">
+                  <label for="account" style="font-weight:300;">七牛账号</label>
+                  <input type="email" name="email" class="form-control" class="userinfo-input">
+                </div>
+                <div class="form-group">
+                  <label for="contact" style="font-weight:300;">联系方式</label>
+                  <input type="text" name="phone" class="form-control" class="userinfo-input">
+                </div>
+                <div class="form-group">
+                  <label for="problemdescription" style="font-weight:300;">问题描述</label>
+                  <textarea class="form-control" name="description" rows="5" placeholder="请在此描述问题"></textarea>
+                </div>
+                <input type="submit" value="提交">
+
+              </form>
+            </div>
+          </div>
+        </div>
+        <p>{{.email}}</p>
+        <p>{{.phone}}</p>
+        <p>{{.description}}</p>
+
+<!--
+        <form action="/" method="post">
+            用户名:<input type="text" name="email">
+            密码:<input type="text" name="phone">
+            <input type="submit" value="提交">
+        </form>
+        <p>{{.email}}</p>
+        <p>{{.phone}}</p>
+        <div class="submit-result">
+          <div class="btn btn-primary btn-result">提交</div>
+        </div>
+ -->
+<!--        <form>
+          <div class="form-group">
+            <label for="problemdescription">用户信息</label>
+            <textarea class="form-control" rows="3" placeholder="请在此描述问题"></textarea>
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+ -->
+
+      </div>
+    </div>
+
+<!--          <h5>速度检测</h5>
+          <p>上行速度:</p>
+          <table class="table">
+            <thead>
+              <tr>
+              <th class="tableurl">上传域名</th>
+              <th>文件大小</th>
+              <th>耗时</th>
+              <th>速度</th>
+              <th>状态</th>
+              </tr>
+            </thead>
+            <tbody class="js-upload-area">
+            </tbody>
+          </table>
+          <p>下行速度:</p>
+          <table class="table">
+            <thead>
+              <tr>
+              <th class="tableurl">下载域名</th>
+              <th>文件大小</th>
+              <th>耗时</th>
+              <th>速度</th>
+              <th>状态</th>
+              </tr>
+            </thead>
+            <tbody class="js-download-area">
+            </tbody>
+          </table> -->
+
+
+
+    <input type="hidden" value="http://portal-tools.qiniudn.com" id="domain">
+    <input type="hidden" value="http://up.qiniu.com" id="up_host">
+    <input type="hidden" value="http://upload.qiniu.com" id="upload_host">
+    <input type="hidden" value="GeKdDZhpPh6rxoVNCSrvygimGSdH7jOUvalFGZrp:OK9Q2YFFmpqlUGuGbjpf_tuLLwg=:eyJzY29wZSI6InBvcnRhbC10b29scyIsImRlYWRsaW5lIjoxNDUzNzc1OTg2LCJkZXRlY3RNaW1lIjoxfQ==" id="token">
+    <script type="text/javascript" src="/static/speedtest.js"></script>
+
+    <script type="text/javascript">
+      var connection = navigator.connection||navigator.mozConnection||navigator.webkitConnection||{tyep:'unknown'};
+      var type_text = ['unknown','ethernet','wifi','2g','3g','4g','none'];
+      var re_el = document.getElementById("re");
+      get_status();
+      function get_status(){
+        if(typeof(connection.type) == "number"){
+          connection.type_text = type_text[connection.type];
+        }else{
+          connection.type_text = connection.type;
+        }
+        if(typeof(connection.bandwidth) == "number"){
+          if(connection.bandwidth > 10){
+            connection.type = 'wifi';
+          }else if(connection.bandwidth > 2){
+            connection.type = '3g';
+          }else if(connection.bandwidth > 0){
+            connection.type = '2g';
+          }else if(connection.bandwidth == 0){
+            connection.type = 'none';
+          }else{
+            connection.type = 'unknown';
+          }
+        }
+        // var str = connection.type_text
+        // if(str.search("undefined") != -1 )
+        //  connection.type_text = "ahhahah";
+        re_el.innerHTML = connection.type_text;
+      }
+    </script>
+
+  </body>
+
+
+</html>
+{{end}}

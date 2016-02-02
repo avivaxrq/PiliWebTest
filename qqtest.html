@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)http://huatuo.oa.com/Conf/List -->
+<html>
+<head _wxacaphhmhimfdlpoedbkmifckcpeifmid_="shake_1.0">
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="腾讯云诊断服务平台">
+    <meta itemprop="name" content="腾讯云诊断服务平台" />
+    <meta itemprop="description" name="description" content="腾讯云诊断服务平台" />
+    <script type="text/javascript" src="http://js.aq.qq.com/js/aq_common.js"></script>
+  <script type="text/javascript" src="/assert/js/jquery.min.js"></script>
+  <link type="text/css" href="/assert/css/header.css" rel="stylesheet">
+  <style>
+  label.error {
+  float: none;
+  color: red;
+  padding-left: .5em;
+  vertical-align: top;
+  }
+  </style>
+  <title>腾讯华佗诊断分析系统</title>
+</head>
+<body>
+  <div class="header clear">
+    <div class="inner">
+      <div class="logo_area" title="华佗系统"><a href="http://huatuo.qq.com"></a></div>
+      <span><font color="white" size="2">腾讯|问题诊断系统-[用户测速]</font></span>
+    </div>
+
+  </div><style type="text/css" media="screen">
+    .loading {
+      position:absolute;
+      top:50%;
+      left:50%;
+      width:205px;
+      height:88px;
+      padding-top:12px;
+      font-family:Arial;
+      font-size:11px;
+      display:block;
+      color:#666;
+      text-align:center;
+      z-index:1100;
+    }
+    .loading_iframe {
+      position:absolute;
+      filter:Alpha(enabled=true,opacity=0);
+      left:0;
+      top:0;
+      margin:0;
+      z-index:1100;
+    }
+    .unloading {
+      display:none;
+    }
+    .unloading_iframe {
+      display:none;
+    }
+      .Bg_FormTitle {
+        background-color: #E4ECF7;
+        font-size: 12px;
+        color: #075387;
+        font-weight: bold;
+        border-top-style: none;
+        border-right-style: none;
+        border-bottom-style: none;
+        border-left-style: none;
+        line-height: 16px;
+      }
+      .Bg_FormContentWh {
+        background-color: #FFFFFF;
+        color: #333333;
+        font-family: "宋体", Tahoma;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: left;
+      }
+      .Bg_FormContentYe {
+        background-color: #FEF9D1;
+        color: #333333;
+        font-family: "宋体", Tahoma;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: left;
+      }
+      .Bg_FormContentGr {
+        background-color: #F3F3F3;
+        color: #333333;
+        font-family: "宋体", Tahoma;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: left;
+      }
+</style>
+<div class="main">
+  <table id="myTable_7" style="display:none" width="95%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CFCFCF">
+    <tr class="Bg_FormTitle">
+      <td width="15%">查看<a onclick='generateCheckReport()' style="color:#000000;font-size:25px;">诊断报告<a></td>
+      <td>下载<a href="http://imgcache.gtimg.cn/huatuo/apks/huatuo.apk" style="color:#000000;font-size:25px;">诊断APP</a>，深度拨测</td>
+    </tr>
+
+  </table>
+
+  <table id="myTable_3" width="95%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CFCFCF">
+    <tr class="Bg_FormTitle">
+      <td width="15%">以下是您IP相关信息</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td class="Bg_FormContentWh">您的ip为：</td>
+      <td class="Bg_FormContentWh">222.73.202.226&nbsp;中国电信 上海市 上海市     </td>
+    </tr>
+    <tr>
+      <td class="Bg_FormContentGr">您的Local DNS IP为：</td>
+      <td class="Bg_FormContentGr" id='ldns'> </td>
+    </tr>
+    <tr>
+      <td class="Bg_FormContentGr">您的Local DNS 运营商为：</td>
+      <td class="Bg_FormContentGr" id='ldnsisp'> </td>
+    </tr>
+  </table>
+    <table width="95%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CFCFCF">
+                <tr class="Bg_FormTitle"><td width="15%">以下是您机器相关信息</td><td></td></tr>
+                <tr class="Bg_FormContentYe"><td width="15%">操作系统</td><td id='os_info'></td></tr>
+                <tr class="Bg_FormContentYe"><td width="15%">浏览器</td><td id='browser_info'></td></tr>
+                <tr class="Bg_FormContentYe"><td width="15%">用户代理</td><td id='useragent_info'></td></tr>
+                <tr class="Bg_FormContentYe"><td width="15%">Flash 版本号</td><td id='flash_info'></td></tr>
+                <tr class="Bg_FormContentYe"><td width="15%">Cookie 状态</td><td id='cookie_info'></td></tr>
+                <tr class="Bg_FormContentYe"><td width="15%">Javascript 状态</td><td id='js_info'>关闭</td></tr>
+                <tr class="Bg_FormContentYe"><td width="15%">LocalStorage 状态</td><td id='ls_info'></td></tr>
+        </table>
+  <table id="myTable_1" width="95%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CFCFCF">
+    <tr class="Bg_FormTitle">
+      <td width="15%">以下是腾讯公司域名的测试结果</td>
+      <td></td>
+    </tr>
+    <tr class='Bg_FormContentWh'><td >inews.qq.com</td><td id='inews.qq.com_1'>测试中...</td></tr><tr class='Bg_FormContentYe'><td >www.qq.com</td><td id='www.qq.com_1'>测试中...</td></tr><tr class='Bg_FormContentWh'><td >3g.qq.com</td><td id='3g.qq.com_1'>测试中...</td></tr><tr class='Bg_FormContentYe'><td >mail.qq.com</td><td id='mail.qq.com_1'>测试中...</td></tr><tr class='Bg_FormContentWh'><td >user.qzone.qq.com</td><td id='user.qzone.qq.com_1'>测试中...</td></tr><tr class='Bg_FormContentYe'><td >r.qzone.qq.com</td><td id='r.qzone.qq.com_1'>测试中...</td></tr><tr class='Bg_FormContentWh'><td >w.qzone.qq.com</td><td id='w.qzone.qq.com_1'>测试中...</td></tr><tr class='Bg_FormContentYe'><td >ptlogin2.qq.com</td><td id='ptlogin2.qq.com_1'>测试中...</td></tr><tr class='Bg_FormContentWh'><td >check.ptlogin2.qq.com</td><td id='check.ptlogin2.qq.com_1'>测试中...</td></tr><tr class='Bg_FormContentYe'><td >ui.ptlogin2.qq.com</td><td id='ui.ptlogin2.qq.com_1'>测试中...</td></tr><tr class='Bg_FormContentWh'><td >i.mail.qq.com</td><td id='i.mail.qq.com_1'>测试中...</td></tr><tr class='Bg_FormContentYe'><td >v.qq.com</td><td id='v.qq.com_1'>测试中...</td></tr>  </table>
+  <table id="myTable_2" width="95%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#CFCFCF">
+    <tr class="Bg_FormTitle">
+      <td width="15%">以下是其他域名的测试结果</td>
+      <td></td>
+    </tr>
+    <tr class='Bg_FormContentWh'><td >c.3g.163.com</td><td id='c.3g.163.com_2'>测试中...</td></tr><tr class='Bg_FormContentYe'><td >weibo.com</td><td id='weibo.com_2'>测试中...</td></tr><tr class='Bg_FormContentWh'><td >www.baidu.com</td><td id='www.baidu.com_2'>测试中...</td></tr><tr class='Bg_FormContentYe'><td >www.sina.com.cn</td><td id='www.sina.com.cn_2'>测试中...</td></tr><tr class='Bg_FormContentWh'><td >www.taobao.com</td><td id='www.taobao.com_2'>测试中...</td></tr> </table>
+<!--  <iframe id="jumpAppIframe" src="" style="display:none" /> -->
+</div>
+<div id='imgload'></div>
+<script src="/js/common.js"></script>
+<script src="/js/check.js"></script>
+<script language="JavaScript">
+if (jsVersion && jsVersion < 1.0) {
+  jsVersion = 1.0;
+}
+</script>
+<script language="JavaScript1.1">
+if (jsVersion && jsVersion < 1.1) {
+  jsVersion = 1.1;
+}
+</script>
+<script language="JavaScript1.2">
+if (jsVersion && jsVersion < 1.2) {
+  jsVersion = 1.2;
+}
+</script>
+<script language="JavaScript1.3">
+if (jsVersion && jsVersion < 1.3) {
+  jsVersion = 1.3;
+}
+</script>
+<script language="JavaScript1.4">
+if (jsVersion && jsVersion < 1.4) {
+  jsVersion = 1.4;
+}
+</script>
+<script language="JavaScript1.5">
+if (jsVersion && jsVersion < 1.5) {
+  jsVersion = 1.5;
+}
+</script>
+<script language="JavaScript1.6">
+if (jsVersion && jsVersion < 1.6) {
+  jsVersion = 1.6;
+}
+</script>
+<script   language="JavaScript1.7">
+if (jsVersion && jsVersion < 1.7) {
+  jsVersion = 1.7;
+}
+</script>
+<script language="JavaScript1.8">
+if (jsVersion && jsVersion < 1.8) {
+  jsVersion = 1.8;
+}
+</script>
+<script language="JavaScript1.9">
+if (jsVersion && jsVersion < 1.9) {
+  jsVersion = 1.9;
+}
+</script>
+<script language="javascript">
+
+  //hobo add start
+  var domainCheckArray = {};
+  var ipInfoArray = {};
+  ipInfoArray['userIp'] = "222.73.202.226&nbsp;中国电信 上海市 上海市";
+  var browserInfoArray = {};
+  var realDomainCheckResult = {};
+
+  //hobo add end
+  var binfo =getBrowser();
+  var osText = osInfo();
+  $('#browser_info').text(binfo);
+  $('#os_info').text(osText);
+  $('#useragent_info').text(navigator.userAgent);
+  $('#flash_info').text(getFlashVersion());
+  $('#cookie_info').text(cookieInfo());
+  $('#js_info').text("开启(" + jsVersion + ")");
+  $('#ls_info').text(localStorageInfo());
+
+  browserInfoArray['browser_info'] = binfo;
+  browserInfoArray['os_info'] = osText;
+  browserInfoArray['useragent_info'] = navigator.userAgent;
+  browserInfoArray['flash_info'] = getFlashVersion();
+  browserInfoArray['cookie_info'] = cookieInfo();
+  browserInfoArray['js_info'] = jsVersion;
+  browserInfoArray['ls_info'] = localStorageInfo();
+
+  var req_num = 17;
+  var domains = [];
+  var connectNum = "3";
+  var connectData = [[],{"inews.qq.com":{"time":-1,"cnt":"0"},"www.qq.com":{"time":-1,"cnt":"0"},"3g.qq.com":{"time":-1,"cnt":"0"},"mail.qq.com":{"time":-1,"cnt":"0"},"user.qzone.qq.com":{"time":-1,"cnt":"0"},"r.qzone.qq.com":{"time":-1,"cnt":"0"},"w.qzone.qq.com":{"time":-1,"cnt":"0"},"ptlogin2.qq.com":{"time":-1,"cnt":"0"},"check.ptlogin2.qq.com":{"time":-1,"cnt":"0"},"ui.ptlogin2.qq.com":{"time":-1,"cnt":"0"},"i.mail.qq.com":{"time":-1,"cnt":"0"},"v.qq.com":{"time":-1,"cnt":"0"}},{"c.3g.163.com":{"time":-1,"cnt":"0"},"weibo.com":{"time":-1,"cnt":"0"},"www.baidu.com":{"time":-1,"cnt":"0"},"www.sina.com.cn":{"time":-1,"cnt":"0"},"www.taobao.com":{"time":-1,"cnt":"0"}}];
+  var connRealIp = [];
+  var timeout = 6000;
+  function domainBoce(domain) {
+    $.get("./?boce=" + domain, function(data) {
+      document.getElementById(data.domain + '_boce').innerHTML = data.boce;
+      realDomainCheckResult['boce'] = data.boce;
+    }, 'json');
+  }
+  for(var i=0; i < domains.length; i++) {
+    document.getElementById(domains[i] + '_boce').innerHTML = "<a href=\"javascript:domainBoce(\'" + domains[i] + "\');\">开始拨测</a>";
+  }
+  function saveDns(ldndsip){
+    var val = /([0-9]{1,3}\.{1}){3}[0-9]{1,3}/;
+    var vald = val.exec(ldndsip);
+    var dnsIp;
+    if (vald == null) {
+      ipInfoArray['ldnsisp'] = "get fail";
+      ipInfoArray['ldns'] = "get fail";
+      $('#ldns').html('获取失败');
+      $('#ldnsisp').html('获取失败');
+      for(var i=0; i < domains.length; i++) {
+        $('#'+ domains[i] +'_ldnsjc').html("获取失败");
+        realDomainCheckResult['ldnsjc'] = 'get fail';
+      }
+    } else {
+      ipInfoArray['ldns'] = ldndsip;
+
+      $('#ldns').html(ldndsip);
+      $.get("./?dnsip=" + ldndsip, function(data) {
+        $('#ldnsisp').html(data);
+        ipInfoArray['ldnsisp'] = data;
+        $("#myTable_7").show();
+      });
+      for(var i=0; i < domains.length; i++) {
+        $.get("./?dnsip=" + ldndsip + "&domain=" + domains[i], function(data) {
+          document.getElementById(data.domain + '_ldnsjc').innerHTML = data.jc;
+          realDomainCheckResult['ldnsjc'] = data.jc;
+        }, 'json');
+        $("#myTable_7").show();
+      }
+
+
+    }
+
+  }
+
+  function saveData(domain,num,ptime){
+    for(var i=0; i < domains.length; i++) {
+        if(domain == domains[i])
+        {
+          realDomainCheckResult[domain] = ptime;
+          $("#myTable_7").show();
+        }
+                }
+    domainCheckArray[domain]= ptime;
+    var tips = "";
+    if(ptime == -1){
+      tips = "网络差，延迟大于"+timeout+"毫秒";
+    }else{
+
+      tips = "网络正常,延迟"+ptime + "毫秒";
+    }
+    // if(typeof(huatuo) != 'undefined' && typeof(connRealIp[num] != 'undefined') ){
+    //    tips += " <input type='button' onclick='doCompare("+num+")' value='深度检查' />";
+    // }
+    // var platform = getPlatform();
+    // if(platform == "android"){
+    //  tips += " <input type='button' onclick='callHuatuoApp(\"" + platform + "\")' value='深度检查' />";
+    // }
+    document.getElementById(domain+'_'+num).innerHTML = tips;
+  }
+  huatuoCheck.start();
+
+  function doCompare(num){
+    var localdnsip = $('#ldns').html();
+    if(typeof(huatuo) !="undefined"){
+      var localdnsip = $('#ldns').html();
+      huatuo.testdns(String(localdnsip),String(connRealIp[num]));
+    }
+  }
+
+  function getPlatform(){
+    var platform = "pc";
+    var ua = navigator.userAgent;
+    if(ua.indexOf("Android") != -1){
+      platform = "android";
+    } else if(ua.indexOf("iPhone") != -1 || ua.indexOf("iPad") != -1 || ua.indexOf("iPod") != -1){
+      platform = "ios";
+    } else if(ua.indexOf("Windows Phone") != -1 || ua.indexOf("WPDesktop") != -1){
+      platform = "winphone";
+    }
+    return platform;
+  }
+
+  function callHuatuoApp(platform){
+    // var jumpAppIframe = $("#jumpAppIframe");
+    var domainStr = $("#domainLb").html();
+
+    // var isSuccess = true;
+    // jumpAppIframe.onload = function(){
+    //  isSuccess = false;
+    // };
+    if(platform == "android"){
+      location.href = "huatuoapp://detect?taskids=1,2,3,4,5,6,7,8,9&urls=" + domainStr;
+      setTimeout(function(){
+        var result = confirm("您尚未安装诊断App，是否确定安装？");
+        if(result == true){
+          location.href = "http://imgcache.gtimg.cn/huatuo/apks/huatuo.apk";
+        }
+      }, 1500);
+    }
+  }
+
+  function generateCheckReport()
+  {
+    var postReuslt = {};
+    postReuslt['routine_id'] = 'ping';
+    postReuslt['time'] = (new Date()).valueOf();
+    postReuslt['device_id'] = 'ping';
+    postReuslt['app_id'] = "0";
+
+    var routineArray = new Array();
+    var domainCheckDic = {};
+    domainCheckDic['task_id'] = 100;
+    domainCheckDic['result'] = domainCheckArray;
+    routineArray.push(domainCheckDic);
+    var ipInfoDic = {};
+    ipInfoDic['task_id'] = 101;
+    ipInfoDic['result'] = ipInfoArray;
+    routineArray.push(ipInfoDic);
+    var browserInfoDic = {};
+    browserInfoDic['task_id'] = 102;
+    browserInfoDic['result'] = browserInfoArray;
+    routineArray.push(browserInfoDic);
+    var realDomainCheckDic = {};
+    realDomainCheckDic['task_id'] = 103;
+    realDomainCheckDic['result'] = realDomainCheckResult;
+    routineArray.push(realDomainCheckDic);
+
+    postReuslt['routine'] = routineArray;
+
+    $.post("/SendToHuatuoAjax.php",JSON.stringify(postReuslt),function(result){
+      var report_result = eval("("+result+")");
+      if(report_result['ret'] == 0)
+      {
+        window.location.href=report_result['url'];
+      }else
+      {
+        alert("生成失败请重试");
+      }
+    });
+  }
+</script>
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
+
+  (function() {
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://weboc.isd.com/piwik/";
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+    _paq.push(["setSiteId", "6"]);
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript>
+<!-- Piwik Image Tracker -->
+<img src="http://weboc.isd.com/piwik/piwik.php?idsite=6&amp;rec=1" style="border:0" alt="" />
+<!-- End Piwik -->
+</noscript>
+<!-- End Piwik Code -->
+<div class="footer">
+  <footer>
+    <div class="inner">
+      <p>Copyright © 1998 - 2015  Tencent. <a href="http://www.tencent.com/law/mo_law.shtml?/law/copyright.htm" target="_blank">All Rights Reserved.</a> </p><p><a href="http://www.qq.com/culture.shtml" target="_blank">粤网文[2014]0633-233号</a></p>
+    <p>腾讯公司 <a href="http://www.tencent.com/law/mo_law.shtml?/law/copyright.htm" target="_blank">版权所有</a>&nbsp;Designed by SNG 社交网络运营部-&gt;<a href="http://huatuo.qq.com" target="_blank">接入运维团队</a> &nbsp;&nbsp;
+    </p>
+    </div>
+</footer></div>
+
+
+<div class="footernew footheight">
+  <div>
+  <p>
+    <span class="fl"><a href="http://www.sznet110.gov.cn/netalarm/index.jsp" target="_blank" rel="nofollow"><img width="36" height="43" border="0" alt="深圳网络警察报警平台" src="http://img1.qq.com/www/pics/816/816587.gif"></a></span>
+    <span class="fr"><a href="http://www.sznet110.gov.cn/netalarm/index.jsp" target="_blank" rel="nofollow">深圳网络警<br>
+    察报警平台</a></span>
+  </p>
+  <p>
+    <span class="fl"><a href="http://www.sznet110.gov.cn/webrecord/innernet/Welcome.jsp?bano=4403101010155" target="_blank" rel="nofollow"><img width="36" height="42" border="0" alt="公共信息安全网络监察" src="http://img1.qq.com/www/pics/6743/6743671.jpg"></a></span>
+    <span class="fr"><a href="http://www.sznet110.gov.cn/webrecord/innernet/Welcome.jsp?bano=4403101010155" target="_blank" rel="nofollow">公共信息安<br>
+    全网络监察</a></span>
+  </p>
+  <p>
+    <span style="width:44px;" class="fl"><a href="http://net.china.cn/chinese/index.htm" target="_blank" rel="nofollow"><img width="44" height="44" border="0" alt="不良信息举报中心" src="http://mat1.qq.com/www/images/200709/home_b.gif"></a></span>
+    <span style="width:64px;" class="fr"><a class="lcblack" href="http://net.china.cn/chinese/index.htm" target="_blank" rel="nofollow">不良信息<br>
+    举报中心</a></span>
+  </p>
+  <p>
+    <span style="width:44px;" class="fl"><a href="http://www.wenming.cn" target="_blank" rel="nofollow"><img width="44" height="42" border="0" alt="中国文明网传播文明" src="http://mat1.qq.com/www/images/allskin/wmlogo.gif"></a></span>
+    <span style="width:64px;" class="fr"><a class="lcblack" href="http://www.wenming.cn" target="_blank" rel="nofollow">中国文明网<br>传播文明</a></span>
+  </p>
+  <p>
+    <span style="padding:0;" class="fl"><a href="http://search.cxwz.org/cert/l/CX20111018000606000613" target="_blank" rel="nofollow"><img border="0" alt="诚信网站" src="http://mat1.gtimg.com/www/images/allskin/cxrz3.png"></a></span>
+  </p>
+  <p>
+    <span style="width:44px;" class="fl"><a href="http://www.ebs.gov.cn/EntCertificate.aspx?domainId=6917b6fe-b844-4e12-97c5-85b8d1df30ed" target="_blank" rel="nofollow"><img border="0" alt="深圳市市场监督管理局企业主体身份公示" src="http://mat1.gtimg.com/www/images/qq2012/ebsIcon2.png"></a></span>
+    <span style="width:64px;" class="fr"><a class="lcblack" href="http://www.ebs.gov.cn/EntCertificate.aspx?domainId=6917b6fe-b844-4e12-97c5-85b8d1df30ed" target="_blank" rel="nofollow">工商网监<br>电子标识</a></span>
+  </p>
+  </div>
+  </div>
+</body>
